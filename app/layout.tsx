@@ -16,8 +16,8 @@ const nationalPark = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Automate My Coffee",
-  description: "Something's brewing. We're killing your boring tasks, one automation at a time.",
+  title: "Automate My Coffee — AI Automation Agency",
+  description: "We automate the stuff you hate doing. AI automation agency launching soon.",
 };
 
 export default function RootLayout({
