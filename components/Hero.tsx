@@ -4,6 +4,8 @@ import { motion } from "framer-motion";
 import Typewriter from "./Typewriter";
 import FloatingCoffeeCups from "./svg/FloatingCoffeeCups";
 
+const ease = [0.25, 0.46, 0.45, 0.94] as const;
+
 function SteamWisp({ delay, left, size }: { delay: number; left: string; size: string }) {
   return (
     <motion.div
@@ -52,8 +54,6 @@ export default function Hero() {
       {/* Steam wisps */}
       <SteamWisp delay={0} left="15%" size="60px" />
       <SteamWisp delay={1.5} left="75%" size="45px" />
-      <SteamWisp delay={3} left="40%" size="55px" />
-      <SteamWisp delay={2} left="85%" size="35px" />
 
       {/* All content — single centered stack, tight gaps */}
       <div className="relative z-10 max-w-5xl w-full flex flex-col items-center text-center gap-2 px-6 -mt-20 md:-mt-24">
@@ -61,7 +61,7 @@ export default function Hero() {
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] as const }}
+          transition={{ duration: 0.8, delay: 0.2, ease }}
           className="flex flex-col items-center gap-2 mb-4"
         >
           <svg
@@ -128,15 +128,13 @@ export default function Hero() {
               transition={{ duration: 2.8, delay: 1, repeat: Infinity, ease: "easeInOut" }}
             />
             {/* Coffee liquid line inside cup */}
-            <motion.path
+            <path
               d="M20 50 Q40 47 60 50"
               stroke="var(--near-black)"
               strokeWidth="1.5"
               strokeLinecap="round"
               fill="none"
               opacity="0.3"
-              animate={{ d: ["M20 50 Q40 47 60 50", "M20 50 Q40 53 60 50", "M20 50 Q40 47 60 50"] }}
-              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
             />
           </svg>
           <motion.span
@@ -153,7 +151,7 @@ export default function Hero() {
         <motion.h1
           initial={{ opacity: 0, y: 25 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] as const }}
+          transition={{ duration: 0.8, delay: 0.3, ease }}
           className="font-(family-name:--font-national-park) font-bold text-[clamp(2.5rem,8vw,5.5rem)] leading-[1.08] tracking-tight"
           style={{ color: "var(--cream)" }}
         >
@@ -174,7 +172,6 @@ export default function Hero() {
             />
           </span>
         </motion.h1>
-
       </div>
 
       {/* Bottom curve */}

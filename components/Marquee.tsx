@@ -19,7 +19,7 @@ function TickerRow({
   reverse?: boolean;
   muted?: boolean;
 }) {
-  const repeated = [...items, ...items, ...items, ...items];
+  const repeated = [...items, ...items, ...items];
 
   return (
     <div className="overflow-hidden whitespace-nowrap">
