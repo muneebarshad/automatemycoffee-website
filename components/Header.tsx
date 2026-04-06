@@ -19,14 +19,14 @@ export default function Header() {
       transition={{ duration: 0.3, ease: "easeOut" }}
       className="fixed top-0 left-0 right-0 z-50 bg-(--cream)/95 backdrop-blur-xl shadow-[0_1px_0_rgba(var(--near-black-rgb),0.05)]"
     >
-      <div className="mx-auto flex items-center justify-center px-6 py-2">
+      <div className="mx-auto flex items-center justify-center px-6 py-3">
         <Image
-          src="/logos/automatemycoffeelogo_transparent.svg"
+          src="/logos/automatemycoffeelogo_transparent_canva.svg"
           alt="Automate My Coffee"
-          width={160}
-          height={50}
+          width={200}
+          height={60}
           preload
-          className="w-32 md:w-36 h-auto"
+          className="w-72 md:w-96 h-auto"
         />
       </div>
     </motion.header>

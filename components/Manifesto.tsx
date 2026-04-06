@@ -61,14 +61,14 @@ export default function Manifesto() {
   const closingInView = useInView(closingRef, { once: true, margin: "-80px" });
 
   return (
-    <section className="relative w-full py-28 md:py-40 lg:py-52 px-6 md:px-12 lg:px-20 overflow-hidden">
+    <section className="relative w-full py-16 md:py-24 lg:py-32 px-6 md:px-12 lg:px-20 overflow-hidden">
       {/* Decorative side accent */}
       <div
         className="absolute top-24 -left-4 w-2 h-32 md:h-48 rounded-full hidden md:block"
         style={{ backgroundColor: "var(--terracotta)", opacity: 0.15 }}
       />
 
-      <div className="max-w-5xl mx-auto flex flex-col gap-20 md:gap-28 lg:gap-36">
+      <div className="max-w-5xl mx-auto flex flex-col gap-12 md:gap-16 lg:gap-24">
         {statements.map((s, i) => (
           <Statement key={i} {...s} />
         ))}

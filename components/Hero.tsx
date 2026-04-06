@@ -1,8 +1,8 @@
 "use client";
 
-import Image from "next/image";
 import { motion } from "framer-motion";
 import Typewriter from "./Typewriter";
+import FloatingCoffeeCups from "./svg/FloatingCoffeeCups";
 
 function SteamWisp({ delay, left, size }: { delay: number; left: string; size: string }) {
   return (
@@ -33,7 +33,7 @@ function SteamWisp({ delay, left, size }: { delay: number; left: string; size: s
 export default function Hero() {
   return (
     <section
-      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden grain-overlay"
+      className="relative h-screen flex flex-col items-center justify-center overflow-hidden grain-overlay"
       style={{ backgroundColor: "var(--terracotta)" }}
     >
       {/* Decorative circles */}
@@ -46,6 +46,9 @@ export default function Hero() {
         style={{ borderColor: "var(--cream)" }}
       />
 
+      {/* Floating sketch coffee cups */}
+      <FloatingCoffeeCups />
+
       {/* Steam wisps */}
       <SteamWisp delay={0} left="15%" size="60px" />
       <SteamWisp delay={1.5} left="75%" size="45px" />
@@ -53,22 +56,97 @@ export default function Hero() {
       <SteamWisp delay={2} left="85%" size="35px" />
 
       {/* All content — single centered stack, tight gaps */}
-      <div className="relative z-10 max-w-5xl w-full flex flex-col items-center text-center gap-4 px-6">
-        {/* Logo */}
+      <div className="relative z-10 max-w-5xl w-full flex flex-col items-center text-center gap-2 px-6 -mt-20 md:-mt-24">
+        {/* Brewing animation */}
         <motion.div
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1, ease: [0.25, 0.46, 0.45, 0.94] as const }}
-          className="mb-2"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] as const }}
+          className="flex flex-col items-center gap-2 mb-4"
         >
-          <Image
-            src="/logos/automatemycoffeelogo_transparent.svg"
-            alt="Automate My Coffee"
-            width={500}
-            height={150}
-            preload
-            className="w-72 md:w-96 lg:w-120 h-auto"
-          />
+          <svg
+            viewBox="0 0 80 90"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className="w-28 h-28 md:w-36 md:h-36 lg:w-44 lg:h-44"
+          >
+            {/* Coffee cup body */}
+            <path
+              d="M15 40 C14 40 12 41 12 44 L15 70 C15 75 20 78 28 78 L52 78 C60 78 65 75 65 70 L68 44 C68 41 66 40 65 40 Z"
+              stroke="var(--cream)"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              fill="none"
+            />
+            {/* Handle */}
+            <path
+              d="M65 46 C68 46 73 48 73 54 C73 60 68 62 65 62"
+              stroke="var(--cream)"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+              fill="none"
+            />
+            {/* Saucer */}
+            <path
+              d="M8 80 Q40 86 72 80"
+              stroke="var(--cream)"
+              strokeWidth="2"
+              strokeLinecap="round"
+              fill="none"
+              opacity="0.5"
+            />
+            {/* Steam lines — animated */}
+            <motion.path
+              d="M30 36 C29 30 33 27 31 21 C29 15 33 12 31 6"
+              stroke="var(--cream)"
+              strokeWidth="2"
+              strokeLinecap="round"
+              fill="none"
+              initial={{ pathLength: 0, opacity: 0 }}
+              animate={{ pathLength: [0, 1, 1, 0], opacity: [0, 0.7, 0.5, 0], y: [0, -4, -8, -12] }}
+              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+            />
+            <motion.path
+              d="M42 34 C43 28 39 25 41 19 C43 13 39 10 41 4"
+              stroke="var(--cream)"
+              strokeWidth="2"
+              strokeLinecap="round"
+              fill="none"
+              initial={{ pathLength: 0, opacity: 0 }}
+              animate={{ pathLength: [0, 1, 1, 0], opacity: [0, 0.6, 0.4, 0], y: [0, -3, -6, -10] }}
+              transition={{ duration: 3.5, delay: 0.5, repeat: Infinity, ease: "easeInOut" }}
+            />
+            <motion.path
+              d="M54 35 C53 29 57 26 55 20 C53 14 57 11 55 5"
+              stroke="var(--cream)"
+              strokeWidth="2"
+              strokeLinecap="round"
+              fill="none"
+              initial={{ pathLength: 0, opacity: 0 }}
+              animate={{ pathLength: [0, 1, 1, 0], opacity: [0, 0.5, 0.3, 0], y: [0, -5, -9, -13] }}
+              transition={{ duration: 2.8, delay: 1, repeat: Infinity, ease: "easeInOut" }}
+            />
+            {/* Coffee liquid line inside cup */}
+            <motion.path
+              d="M20 50 Q40 47 60 50"
+              stroke="var(--near-black)"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              fill="none"
+              opacity="0.3"
+              animate={{ d: ["M20 50 Q40 47 60 50", "M20 50 Q40 53 60 50", "M20 50 Q40 47 60 50"] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            />
+          </svg>
+          <motion.span
+            className="text-sm md:text-base lg:text-lg tracking-[0.25em] uppercase font-(family-name:--font-national-park)"
+            style={{ color: "rgba(var(--cream-rgb), 0.6)" }}
+            animate={{ opacity: [0.4, 0.8, 0.4] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+          >
+            Brewing...
+          </motion.span>
         </motion.div>
 
         {/* Headline */}
@@ -76,7 +154,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 25 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] as const }}
-          className="font-(family-name:--font-national-park) font-bold text-[clamp(2rem,7vw,4.5rem)] leading-[1.08] tracking-tight"
+          className="font-(family-name:--font-national-park) font-bold text-[clamp(2.5rem,8vw,5.5rem)] leading-[1.08] tracking-tight"
           style={{ color: "var(--cream)" }}
         >
           We automate the stuff
@@ -97,18 +175,6 @@ export default function Hero() {
           </span>
         </motion.h1>
 
-        {/* Subline */}
-        <motion.p
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.6, ease: [0.25, 0.46, 0.45, 0.94] as const }}
-          className="text-sm md:text-lg max-w-md leading-relaxed"
-          style={{ color: "rgba(var(--cream-rgb), 0.65)" }}
-        >
-          Something&apos;s brewing. An AI automation agency
-          <br className="hidden md:block" />
-          {" "}for people who&apos;d rather not do it themselves.
-        </motion.p>
       </div>
 
       {/* Bottom curve */}
