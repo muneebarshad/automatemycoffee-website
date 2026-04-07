@@ -11,22 +11,22 @@ export default function Header() {
   const { scrollY } = useScroll();
 
   // Header background: transparent → cream with glassmorphism
-  const headerBgOpacity = useTransform(scrollY, [150, 350], [0, 0.95]);
-  const headerBlur = useTransform(scrollY, [150, 350], [0, 20]);
-  const headerShadow = useTransform(scrollY, [250, 350], [0, 0.05]);
+  const headerBgOpacity = useTransform(scrollY, [50, 180], [0, 0.95]);
+  const headerBlur = useTransform(scrollY, [50, 180], [0, 20]);
+  const headerShadow = useTransform(scrollY, [120, 180], [0, 0.05]);
 
   const headerBg = useMotionTemplate`rgba(var(--cream-rgb), ${headerBgOpacity})`;
   const headerBackdrop = useMotionTemplate`blur(${headerBlur}px)`;
   const headerBoxShadow = useMotionTemplate`0 1px 0 rgba(var(--near-black-rgb), ${headerShadow})`;
 
   // White logo: fully visible at top, fades out as you scroll
-  const whiteLogoOpacity = useTransform(scrollY, [150, 350], [0.9, 0]);
+  const whiteLogoOpacity = useTransform(scrollY, [50, 180], [1, 0]);
   // Orange logo: hidden at top, fades in as header solidifies
-  const orangeLogoOpacity = useTransform(scrollY, [150, 350], [0, 1]);
+  const orangeLogoOpacity = useTransform(scrollY, [50, 180], [0, 1]);
 
   return (
     <motion.header
-      className="fixed top-0 left-0 right-0 z-50"
+      className="fixed top-0 left-0 right-0 z-50 pt-[env(safe-area-inset-top)]"
       style={{
         background: headerBg,
         backdropFilter: headerBackdrop,

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Outfit } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
@@ -14,6 +14,10 @@ const nationalPark = localFont({
   variable: "--font-national-park",
   weight: "100 800",
 });
+
+export const viewport: Viewport = {
+  viewportFit: "cover",
+};
 
 export const metadata: Metadata = {
   title: "Automate My Coffee — AI Automation Agency",

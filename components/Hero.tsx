@@ -35,7 +35,7 @@ function SteamWisp({ delay, left, size }: { delay: number; left: string; size: s
 export default function Hero() {
   return (
     <section
-      className="relative h-screen flex flex-col items-center justify-center overflow-hidden grain-overlay"
+      className="relative min-h-svh h-screen flex flex-col items-center justify-center overflow-hidden grain-overlay"
       style={{ backgroundColor: "var(--terracotta)" }}
     >
       {/* Decorative circles */}
@@ -55,20 +55,19 @@ export default function Hero() {
       <SteamWisp delay={0} left="15%" size="60px" />
       <SteamWisp delay={1.5} left="75%" size="45px" />
 
-      {/* All content — single centered stack, tight gaps */}
-      <div className="relative z-10 max-w-5xl w-full flex flex-col items-center text-center gap-2 px-6 -mt-20 md:-mt-24">
-        {/* Brewing animation */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.2, ease }}
-          className="flex flex-col items-center gap-2 mb-4"
+      {/* Brewing animation — absolutely positioned so it never shifts when text wraps */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.8, delay: 0.2, ease }}
+        className="absolute z-10 flex flex-col items-center gap-2"
+        style={{ top: "clamp(12%, 18vh, 25%)" }}
         >
           <svg
             viewBox="0 0 80 90"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            className="w-28 h-28 md:w-36 md:h-36 lg:w-44 lg:h-44"
+            className="w-[clamp(6rem,10vw,11rem)] h-auto"
           >
             {/* Coffee cup body */}
             <path
@@ -145,9 +144,10 @@ export default function Hero() {
           >
             Brewing...
           </motion.span>
-        </motion.div>
+      </motion.div>
 
-        {/* Headline */}
+      {/* Headline — centered in the section, independent of cup */}
+      <div className="relative z-10 max-w-5xl w-full flex flex-col items-center text-center px-6 mt-[clamp(6rem,14vh,10rem)]">
         <motion.h1
           initial={{ opacity: 0, y: 25 }}
           animate={{ opacity: 1, y: 0 }}
@@ -157,7 +157,7 @@ export default function Hero() {
         >
           We automate the stuff
           <br />
-          <span style={{ color: "var(--near-black)" }}>
+          <span className="inline-block min-h-[1.1em]" style={{ color: "var(--near-black)" }}>
             <Typewriter
               phrases={[
                 "you hate doing.",
@@ -176,7 +176,7 @@ export default function Hero() {
 
       {/* Bottom curve */}
       <div className="absolute bottom-0 left-0 right-0 pointer-events-none">
-        <svg viewBox="0 0 1440 80" fill="none" preserveAspectRatio="none" className="w-full h-12 md:h-20">
+        <svg viewBox="0 0 1440 80" fill="none" preserveAspectRatio="none" className="w-full h-[clamp(2.5rem,4vw,5rem)]">
           <path d="M0 80L0 40C360 0 1080 0 1440 40L1440 80Z" fill="var(--cream)" />
         </svg>
       </div>
