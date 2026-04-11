@@ -49,13 +49,17 @@ export default function Typewriter({
 
   return (
     <span className={className}>
-      {text}
-      <span
-        className="cursor-blink inline-block ml-0.5"
-        style={{ color: cursorColor }}
-        aria-hidden="true"
-      >
-        |
+      <span aria-hidden="true">
+        {text}
+        <span
+          className="cursor-blink inline-block ml-0.5"
+          style={{ color: cursorColor }}
+        >
+          |
+        </span>
+      </span>
+      <span className="sr-only" aria-live="polite" aria-atomic="true">
+        {currentPhrase}
       </span>
     </span>
   );

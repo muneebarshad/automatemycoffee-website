@@ -13,15 +13,29 @@ const nationalPark = localFont({
   src: "./fonts/NationalPark.ttf",
   variable: "--font-national-park",
   weight: "100 800",
+  display: "swap",
 });
 
 export const viewport: Viewport = {
   viewportFit: "cover",
+  themeColor: "#BE582A",
 };
 
 export const metadata: Metadata = {
   title: "Automate My Coffee — AI Automation Agency",
   description: "We automate the stuff you hate doing. AI automation agency launching soon.",
+  openGraph: {
+    title: "Automate My Coffee — AI Automation Agency",
+    description: "We automate the stuff you hate doing. AI automation agency launching soon.",
+    siteName: "Automate My Coffee",
+    type: "website",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Automate My Coffee — AI Automation Agency",
+    description: "We automate the stuff you hate doing. AI automation agency launching soon.",
+  },
 };
 
 export default function RootLayout({
@@ -31,7 +45,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${outfit.variable} ${nationalPark.variable} h-full`}>
-      <body className="min-h-full flex flex-col font-(family-name:--font-outfit)">
+      <body suppressHydrationWarning className="min-h-full flex flex-col font-(family-name:--font-outfit)">
         {children}
       </body>
     </html>

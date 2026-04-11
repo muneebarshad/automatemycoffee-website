@@ -2,6 +2,7 @@ import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Manifesto from "@/components/Manifesto";
 import Marquee from "@/components/Marquee";
+import InstagramCTA from "@/components/InstagramCTA";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -11,6 +12,7 @@ export default function Home() {
       <Hero />
       <Manifesto />
       <Marquee />
+      <InstagramCTA />
       <Footer />
     </main>
   );

@@ -32,6 +32,8 @@ export default function Header() {
         backdropFilter: headerBackdrop,
         WebkitBackdropFilter: headerBackdrop,
         boxShadow: headerBoxShadow,
+        transform: "translate3d(0,0,0)",
+        willChange: "transform",
       }}
     >
       <div className="mx-auto flex items-center justify-center px-6 py-3 relative">

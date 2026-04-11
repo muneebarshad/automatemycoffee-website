@@ -44,6 +44,7 @@ function TickerRow({
 export default function Marquee() {
   return (
     <section
+      aria-hidden="true"
       className="w-full py-6 md:py-8 overflow-hidden flex flex-col gap-3"
       style={{ backgroundColor: "var(--near-black)", color: "var(--cream)" }}
     >

@@ -86,50 +86,14 @@ function HighlightStatement({ text }: { text: string }) {
   );
 }
 
-/* ── Closing paragraph with clip-path reveal ── */
-
-function ClosingStatement() {
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-80px" });
-
-  return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 30 }}
-      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-      transition={{ duration: 0.8, ease }}
-      className="text-center mx-auto max-w-2xl"
-    >
-      {/* Animated terracotta divider */}
-      <motion.div
-        className="inline-block w-12 h-px mb-8"
-        style={{ backgroundColor: "var(--terracotta)", transformOrigin: "center" }}
-        initial={{ scaleX: 0 }}
-        animate={isInView ? { scaleX: 1 } : { scaleX: 0 }}
-        transition={{ duration: 0.4, ease }}
-      />
-      <p className="text-lg md:text-xl leading-relaxed opacity-70">
-        We&apos;re building the automation agency for people who&apos;d rather be doing{" "}
-        <motion.span
-          className="inline-block"
-          style={{ clipPath: "inset(0 100% 0 0)" }}
-          animate={isInView ? { clipPath: "inset(0 0% 0 0)" } : { clipPath: "inset(0 100% 0 0)" }}
-          transition={{ duration: 0.6, delay: 0.4, ease }}
-        >
-          literally anything else.
-        </motion.span>
-      </p>
-    </motion.div>
-  );
-}
-
 /* ── Main component ── */
 
 export default function Manifesto() {
   return (
-    <section className="relative w-full py-16 md:py-24 lg:py-32 px-6 md:px-12 lg:px-20 overflow-hidden">
+    <section aria-label="Our manifesto" className="relative w-full py-16 md:py-24 lg:py-32 px-6 md:px-12 lg:px-20 overflow-hidden">
       {/* Decorative side accent */}
       <div
+        aria-hidden="true"
         className="absolute top-24 -left-4 w-2 h-32 md:h-48 rounded-full hidden md:block"
         style={{ backgroundColor: "var(--terracotta)", opacity: 0.15 }}
       />
@@ -140,13 +104,7 @@ export default function Manifesto() {
           align="md:text-left md:ml-0 md:mr-auto"
           direction="left"
         />
-        <WordByWordStatement
-          text="Your time is worth more than copy-pasting data."
-          align="md:text-right md:mr-0 md:ml-auto"
-          direction="right"
-        />
-        <HighlightStatement text="AI should feel like magic, not homework." />
-        <ClosingStatement />
+        <HighlightStatement text="Less busywork. More coffee breaks." />
       </div>
     </section>
   );

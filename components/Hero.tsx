@@ -35,15 +35,18 @@ function SteamWisp({ delay, left, size }: { delay: number; left: string; size: s
 export default function Hero() {
   return (
     <section
+      aria-label="Hero"
       className="relative min-h-svh h-screen flex flex-col items-center justify-center overflow-hidden grain-overlay"
       style={{ backgroundColor: "var(--terracotta)" }}
     >
       {/* Decorative circles */}
       <div
+        aria-hidden="true"
         className="absolute -top-32 -right-32 w-125 h-125 md:w-175 md:h-175 rounded-full border opacity-[0.08] pointer-events-none"
         style={{ borderColor: "var(--cream)" }}
       />
       <div
+        aria-hidden="true"
         className="absolute -bottom-48 -left-48 w-100 h-100 md:w-150 md:h-150 rounded-full border opacity-[0.06] pointer-events-none"
         style={{ borderColor: "var(--cream)" }}
       />
@@ -137,6 +140,7 @@ export default function Hero() {
             />
           </svg>
           <motion.span
+            aria-label="Content is brewing, coming soon"
             className="text-sm md:text-base lg:text-lg tracking-[0.25em] uppercase font-(family-name:--font-national-park)"
             style={{ color: "rgba(var(--cream-rgb), 0.6)" }}
             animate={{ opacity: [0.4, 0.8, 0.4] }}
@@ -175,7 +179,7 @@ export default function Hero() {
       </div>
 
       {/* Bottom curve */}
-      <div className="absolute bottom-0 left-0 right-0 pointer-events-none">
+      <div className="absolute bottom-0 left-0 right-0 pointer-events-none" aria-hidden="true">
         <svg viewBox="0 0 1440 80" fill="none" preserveAspectRatio="none" className="w-full h-[clamp(2.5rem,4vw,5rem)]">
           <path d="M0 80L0 40C360 0 1080 0 1440 40L1440 80Z" fill="var(--cream)" />
         </svg>

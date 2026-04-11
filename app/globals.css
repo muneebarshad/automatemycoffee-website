@@ -59,7 +59,23 @@ body {
 
 .ticker-track:hover,
 .ticker-track-reverse:hover {
-  animation-duration: 45s;
+  animation-play-state: paused;
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .cursor-blink {
+    animation: none;
+  }
+
+  .ticker-track,
+  .ticker-track-reverse {
+    animation: none;
+  }
 }
 
 /* Static noise/grain texture overlay */
